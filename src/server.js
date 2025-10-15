@@ -1,4 +1,5 @@
 import express from 'express';
+import { errors } from 'celebrate';
 import cors from 'cors';
 import { logger } from './middleware/logger.js';
 import 'dotenv/config';
@@ -16,6 +17,7 @@ app.use(logger);
 
 app.use(notesRoutes);
 app.use(notFoundHandler);
+app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
